@@ -1,39 +1,24 @@
 /**
- * Step 1: Verify 'crypto-js' module is installed for your project
- * After verifying it is installed, move on to Step 2. No code needs to be written here.
+ * Importing the Block class
  */
+//
+const BlockClass = require('./block.js');
 
 /**
- * Step 2: Import from crypto-js module the sha265 library
+ * Creating a block object
  */
+const block = new BlockClass.Block("Test Block");
 
-var SHA256 = require("crypto-js/sha256");
+// Generating the block hash
+block.generateHash().then((result) => {
+	console.log(`Block Hash: ${result.hash}`);
+	console.log(`Block: ${JSON.stringify(result)}`);
+}).catch((error) => {console.log(error)});
 
 /**
- * Variables: Do not change variable values to be able to answer the quiz
+ * Step 3: Run the application in node.js
+ * 
  */
 
-const data1 = "Blockchain Rock!";
-const dataObject = {
-	id: 1,
-  	body: "With Object Works too",
-  	time: new Date().getTime().toString().slice(0,-3)
-};
-
-/**
- * Step 3: Add code to the `generate hash function
- * Function that generate the SHA256 Hash
- * @param {*} obj 
- */
-
-function generateHash(obj) {
-	return SHA256(JSON.stringify((obj)));
-}
-
-console.log(`SHA256 Hash: ${generateHash(data1)}`);
-console.log("************************************");
-console.log(`SHA256 Hash: ${generateHash(dataObject)}`);
-
-/**
- * Run your application using `node app.js`
- */
+// From the terminal: cd into Project folder
+// From the terminal: Run node app.js to run the code
